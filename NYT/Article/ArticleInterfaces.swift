@@ -15,6 +15,7 @@ protocol ArticleBusinessLogic {
 }
 
 protocol ArticlePresentable {
-    func presentArticleList(with response: ArticleModels.ArticleResponse)
+    func presentArticleList(with response: ArticleModels.SearchArticleResponse)
+    func presentArticleList(with response: ArticleModels.ArticleListResponse)
     func displayArticleList(with error: ArticleModels.DataError)
 }

@@ -9,28 +9,29 @@ import UIKit
 
 class ArticleListDataSource: NSObject, UITableViewDataSource {
 
-    var objects = [ArticleInfo(url: nil, title: "A", description: "B")]
+    var objects: [NYTTableViewCellViewModel]?// = [ArticleInfo(url: nil, title: "A", description: "B")]
     
     var identifier = "Cell"
     
     required override init() {
         super.init()
         
-        objects.append(ArticleInfo(url: nil, title: "A", description: "B"))
+//        objects.append(ArticleInfo(url: nil, title: "A", description: "B"))
+    }
+    
+    func setData(objects: [NYTTableViewCellViewModel]?) {
+        self.objects = objects
     }
     
     // MARK: - Table View
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return objects.count
+        return objects?.count ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: identifier, for: indexPath) as? NYTTableViewCell<NYTTableViewCellViewModel>,
-              let title = objects[safe: indexPath.row]?.title,
-              let subtitle = objects[safe: indexPath.row]?.description else { return UITableViewCell() }
-        
-        let viewModel = NYTTableViewCellViewModel(titleText: title, subtitle: subtitle)
+              let viewModel = objects?[safe: indexPath.row] else { return UITableViewCell() }
         
         cell.configureWith(value: viewModel)
         cell.accessoryType = .detailButton

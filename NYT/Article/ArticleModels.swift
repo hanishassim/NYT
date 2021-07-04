@@ -6,8 +6,12 @@
 //
 
 public enum ArticleModels {
-    public struct ArticleResponse {
-        var article: [ArticleInfo]?
+    public struct SearchArticleResponse {
+        var article: [ArticleInfoDoc]?
+    }
+    
+    public struct ArticleListResponse {
+        var article: [ArticleListInfoResponse]?
     }
     
     public struct ArticleViewModel {

@@ -29,6 +29,7 @@ public class NYTTableViewCell<ViewModel>: UITableViewCell where ViewModel: NYTTa
         accessoryType = .disclosureIndicator
         
         setupViews()
+        setupListeners()
     }
     
     required init?(coder: NSCoder) {
@@ -40,7 +41,7 @@ public class NYTTableViewCell<ViewModel>: UITableViewCell where ViewModel: NYTTa
     }
     
     private func setupViews() {
-        addSubview(separatorView)
+        contentView.addSubview(separatorView)
         
         NSLayoutConstraint.activate([
             separatorView.leadingAnchor.constraint(equalTo: leadingAnchor),

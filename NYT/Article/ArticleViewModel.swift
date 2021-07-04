@@ -12,8 +12,6 @@ protocol ArticleViewModelType {
     
     var articles: Box<[NYTTableViewCellViewModel]?> { get }
     var articleFetchError: Box<Error?> { get }
-    
-    init(with: ArticleViewModel.ArticleType)
 }
 
 class ArticleViewModel: ArticleViewModelType {
@@ -21,7 +19,7 @@ class ArticleViewModel: ArticleViewModelType {
         case mostViewed
         case mostShared
         case mostEmailed
-        case withKeyword(keyword: String)
+        case withKeyword(_ keyword: String)
     }
     
     public let type = Box<ArticleType>(.mostViewed)
@@ -29,9 +27,13 @@ class ArticleViewModel: ArticleViewModelType {
     public let articles = Box<[NYTTableViewCellViewModel]?>(nil)
     public let articleFetchError = Box<Error?>(nil)
     
-    private let interactor = ArticleInteractor()
+    private var interactor: ArticleBusinessLogic!
     
-    required init(with type: ArticleType) {
+    convenience init(with type: ArticleType) {
+        self.init()
+
+        interactor = ArticleInteractor(presenter: ArticlePresenter(viewController: self))
+        
         self.type.value = type
         
         interactor.getArticle(with: type)

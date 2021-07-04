@@ -8,7 +8,7 @@
 import UIKit
 
 public protocol NYTSearchTableViewCellDelegate: AnyObject {
-    func didTapSearch()
+    func didTapSearch(with keyword: String)
 }
 
 public class NYTSearchTableViewCell<ViewModel>: UITableViewCell where ViewModel: NYTSearchTableViewCellViewModelType {
@@ -49,6 +49,14 @@ public class NYTSearchTableViewCell<ViewModel>: UITableViewCell where ViewModel:
         return button
     }()
     
+    lazy var stackView: UIStackView = {
+        let stackView = UIStackView(arrangedSubviews: [textField, button])
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+        stackView.axis = .vertical
+        stackView.spacing = 24
+        return stackView
+    }()
+    
     private var viewModel: NYTSearchTableViewCellViewModelType = NYTSearchTableViewCellViewModel()
     
     // MARK: - Initializer and Lifecycle Methods -
@@ -57,6 +65,7 @@ public class NYTSearchTableViewCell<ViewModel>: UITableViewCell where ViewModel:
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
         setupViews()
+        setupListeners()
     }
     
     required init?(coder: NSCoder) {
@@ -71,21 +80,17 @@ public class NYTSearchTableViewCell<ViewModel>: UITableViewCell where ViewModel:
         backgroundColor = .clear
         selectionStyle = .none
         
-        addSubview(textField)
-        addSubview(button)
+        contentView.addSubview(stackView)
         
         NSLayoutConstraint.activate([
-            textField.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20),
-            textField.centerXAnchor.constraint(equalTo: centerXAnchor),
-            textField.topAnchor.constraint(equalTo: topAnchor, constant: 60),
-            
             textField.heightAnchor.constraint(equalToConstant: 44),
 
-            button.topAnchor.constraint(equalTo: textField.bottomAnchor, constant: 24),
-            button.centerXAnchor.constraint(equalTo: centerXAnchor),
-            button.bottomAnchor.constraint(equalTo: bottomAnchor),
+            stackView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 20),
+            stackView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 60),
+            stackView.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
+            stackView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
             
-            button.heightAnchor.constraint(equalToConstant: 44),
+            button.heightAnchor.constraint(equalToConstant: 44)
         ])
     }
     
@@ -114,6 +119,8 @@ public class NYTSearchTableViewCell<ViewModel>: UITableViewCell where ViewModel:
     }
     
     @objc private func buttonTapped() {
-        delegate?.didTapSearch()
+        guard let keyword = textField.text, !keyword.isEmpty else { return }
+        
+        delegate?.didTapSearch(with: keyword)
     }
 }

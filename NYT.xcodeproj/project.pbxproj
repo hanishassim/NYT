@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		AE36F75017F67924E3077A0D /* Pods_NYT.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B0C83279DEC54557380318D8 /* Pods_NYT.framework */; };
+		CBA246F926918AA9002A8FA3 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBA246F826918AA8002A8FA3 /* API.swift */; };
+		CBA246FC2691A4CD002A8FA3 /* ArticlePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBA246FB2691A4CD002A8FA3 /* ArticlePresenter.swift */; };
 		CBCA6E51269179F3007B0362 /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = CBCA6E50269179F3007B0362 /* Podfile */; };
 		CBCA6E5826917A8E007B0362 /* SearchInterfaces.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBCA6E5726917A8E007B0362 /* SearchInterfaces.swift */; };
 		CBCA6E5B26917ACF007B0362 /* ArticleInterfaces.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBCA6E5A26917ACF007B0362 /* ArticleInterfaces.swift */; };
@@ -46,6 +48,8 @@
 		7D2D3DEBF6624A9A0AF1842E /* Pods-NYT.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NYT.debug.xcconfig"; path = "Target Support Files/Pods-NYT/Pods-NYT.debug.xcconfig"; sourceTree = "<group>"; };
 		B0C83279DEC54557380318D8 /* Pods_NYT.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_NYT.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BE4D735F5995926A6ABD0F6F /* Pods-NYT.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NYT.release.xcconfig"; path = "Target Support Files/Pods-NYT/Pods-NYT.release.xcconfig"; sourceTree = "<group>"; };
+		CBA246F826918AA8002A8FA3 /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
+		CBA246FB2691A4CD002A8FA3 /* ArticlePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticlePresenter.swift; sourceTree = "<group>"; };
 		CBCA6E50269179F3007B0362 /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = SOURCE_ROOT; };
 		CBCA6E5726917A8E007B0362 /* SearchInterfaces.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchInterfaces.swift; sourceTree = "<group>"; };
 		CBCA6E5A26917ACF007B0362 /* ArticleInterfaces.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleInterfaces.swift; sourceTree = "<group>"; };
@@ -142,6 +146,7 @@
 				CBDD7EA42691509400500E64 /* NYTSearchTableViewCell */,
 				CBDD7EA62691526B00500E64 /* SearchDataSource.swift */,
 				CBDD7EA92691708500500E64 /* Constants.swift */,
+				CBA246F826918AA8002A8FA3 /* API.swift */,
 			);
 			path = NYT;
 			sourceTree = "<group>";
@@ -187,6 +192,7 @@
 				CBCA6E5A26917ACF007B0362 /* ArticleInterfaces.swift */,
 				CBCA6E5D26917B19007B0362 /* ArticleInteractor.swift */,
 				CBCA6E6026917C7D007B0362 /* ArticleModels.swift */,
+				CBA246FB2691A4CD002A8FA3 /* ArticlePresenter.swift */,
 			);
 			path = Article;
 			sourceTree = "<group>";
@@ -327,6 +333,7 @@
 				CBDD7E50268FFCEB00500E64 /* HomeViewModel.swift in Sources */,
 				CBDD7E602690073600500E64 /* Box.swift in Sources */,
 				CBCA6E5B26917ACF007B0362 /* ArticleInterfaces.swift in Sources */,
+				CBA246F926918AA9002A8FA3 /* API.swift in Sources */,
 				CBDD7E53268FFD0700500E64 /* HomeView.swift in Sources */,
 				CBCA6E5E26917B19007B0362 /* ArticleInteractor.swift in Sources */,
 				CBDD7E742690AC3400500E64 /* CellInfo.swift in Sources */,
@@ -343,6 +350,7 @@
 				CBDD7E712690A7DA00500E64 /* Extensions.swift in Sources */,
 				CBDD7E882690BD9000500E64 /* ArticleViewController.swift in Sources */,
 				CBDD7E7F2690B25600500E64 /* SearchView.swift in Sources */,
+				CBA246FC2691A4CD002A8FA3 /* ArticlePresenter.swift in Sources */,
 				CBDD7E34268FFC4E00500E64 /* SceneDelegate.swift in Sources */,
 				CBDD7EA72691526C00500E64 /* SearchDataSource.swift in Sources */,
 				CBDD7EA22691508C00500E64 /* NYTSearchTableViewCellViewModel.swift in Sources */,

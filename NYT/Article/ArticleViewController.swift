@@ -55,10 +55,11 @@ class ArticleViewController<ViewModel>: UIViewController, UITableViewDelegate wh
     }
     
     private func setupListeners() {
-        viewModel.type.bind { [weak self] in
+        viewModel.articles.bind { [weak self] in
             guard let strongSelf = self else { return }
             
-            strongSelf.title = "\($0)"
+            strongSelf.dataSource.setData(objects: $0)
+            strongSelf.rootView.tableView.reloadData()
         }
         
         viewModel.articleFetchError.bind { [weak self] in
@@ -71,7 +72,7 @@ class ArticleViewController<ViewModel>: UIViewController, UITableViewDelegate wh
     // MARK: - Table View Delegate
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        guard let url = dataSource.objects[safe: indexPath.row]?.url else { return }
+        guard let url = dataSource.objects?[safe: indexPath.row]?.url.value else { return }
         
         presentWebView(for: url)
         

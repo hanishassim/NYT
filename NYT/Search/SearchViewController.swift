@@ -70,7 +70,7 @@ class SearchViewController<ViewModel>: UIViewController, UITableViewDelegate, NY
     
     // MARK: - NYTSearchTableViewCellDelegate
     
-    func didTapSearch() {
-        router.navigateToArticleList(.withKeyword(keyword: "Hello"))
+    func didTapSearch(with keyword: String) {
+        router.navigateToArticleList(.withKeyword(keyword))
     }
 }
