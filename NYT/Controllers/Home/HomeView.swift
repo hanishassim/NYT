@@ -33,8 +33,6 @@ class HomeView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    
-    
     private func setupSubviews() {
         addSubview(tableView)
         

@@ -20,7 +20,7 @@ extension ArticlePresenter: ArticlePresentable {
         var list = [NYTTableViewCellViewModel]()
         
         list = articles.map {
-            return NYTTableViewCellViewModel(titleText: $0.title ?? "", subtitle: $0.published_date, url: $0.uri ?? $0.url)
+            return NYTTableViewCellViewModel(titleText: $0.title ?? "", subtitle: $0.published_date, url: $0.url)
         }
         
         let viewModel = ArticleModels.ArticleViewModel(articleViewModels: list)
@@ -33,8 +33,10 @@ extension ArticlePresenter: ArticlePresentable {
         
         var list = [NYTTableViewCellViewModel]()
         
-        list = articles.map {
-            return NYTTableViewCellViewModel(titleText: $0.snippet ?? "", subtitle: $0.abstract, url: $0.web_url)
+        let filteredArticles = articles.filter { $0.headline?.print_headline != nil }
+        
+        list = filteredArticles.map {
+            return NYTTableViewCellViewModel(titleText: $0.headline?.print_headline ?? "", subtitle: $0.pub_date, url: $0.web_url)
         }
         
         let viewModel = ArticleModels.ArticleViewModel(articleViewModels: list)

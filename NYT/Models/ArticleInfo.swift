@@ -17,11 +17,13 @@ struct ArticleInfoResponse: Codable {
 }
 
 struct ArticleInfoDoc: Codable {
-    var abstract: String?
     var web_url: URL?
-    var uri: URL?
-    var snippet: String?
-    var lead_paragraph: String?
+    var headline: ArticleInfoDocHeadline?
+    var pub_date: String?
+}
+
+struct ArticleInfoDocHeadline: Codable {
+    var print_headline: String?
 }
 
 struct ArticleListInfo: Codable {
@@ -33,5 +35,4 @@ struct ArticleListInfoResponse: Codable {
     var title: String?
     var published_date: String?
     var url: URL?
-    var uri: URL?
 }

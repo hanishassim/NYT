@@ -8,7 +8,7 @@
 import UIKit
 
 class HomeViewController<ViewModel>: UIViewController, UITableViewDelegate where ViewModel: HomeViewModelType {
-
+    
     // MARK: - Properties -
     // MARK: Internal
     
@@ -20,8 +20,8 @@ class HomeViewController<ViewModel>: UIViewController, UITableViewDelegate where
     
     private(set) lazy var viewModel: ViewModel = ViewModel()
     private lazy var router: HomeRoutable = HomeRouter(viewController: self)
-
-    private var dataSource = ObjectTableSource()
+    
+    private var dataSource = HomeTableSource()
     
     // MARK: - Initializer and Lifecycle Methods -
     
@@ -44,7 +44,6 @@ class HomeViewController<ViewModel>: UIViewController, UITableViewDelegate where
         super.viewDidLoad()
         
         setupViews()
-        setupListeners()
     }
     
     private func setupViews() {
@@ -56,28 +55,31 @@ class HomeViewController<ViewModel>: UIViewController, UITableViewDelegate where
         rootView.tableView.delegate = self
     }
     
-    private func setupListeners() {
-//        viewModel.searchSection.bind
-    }
-    
     // MARK: - Table View Delegate
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let title = dataSource.objects[safe: indexPath.section]?.sectionData?[indexPath.row]
         
-        switch title?.lowercased() {
-        case "Search Articles".lowercased():
+        switch title {
+        case HomeSections.search:
             router.navigateToSearch()
-        case "Most Viewed".lowercased():
+        case HomeSections.mostViewed:
             router.navigateToArticleList(.mostViewed)
-        case "Most Shared".lowercased():
+        case HomeSections.mostShared:
             router.navigateToArticleList(.mostShared)
-        case "Most Emailed".lowercased():
+        case HomeSections.mostEmailed:
             router.navigateToArticleList(.mostEmailed)
         default: break
         }
         
         tableView.deselectRow(at: indexPath, animated: true)
+    }
+    
+    func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
+        guard let header = view as? UITableViewHeaderFooterView else { return }
+        
+        header.textLabel?.font = .boldSystemFont(ofSize: 16)
+        header.textLabel?.textColor = .white
     }
 }
 

@@ -84,7 +84,7 @@ public class NYTSearchTableViewCell<ViewModel>: UITableViewCell where ViewModel:
         
         NSLayoutConstraint.activate([
             textField.heightAnchor.constraint(equalToConstant: 44),
-
+            
             stackView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 20),
             stackView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 60),
             stackView.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
@@ -96,18 +96,6 @@ public class NYTSearchTableViewCell<ViewModel>: UITableViewCell where ViewModel:
     
     private func setupListeners() {
         button.addTarget(self, action: #selector(buttonTapped), for: .touchUpInside)
-        
-//        viewModel.titleText.bind { [weak self] in
-//            guard let strongSelf = self else { return }
-//
-//            strongSelf.textLabel?.text = $0
-//        }
-//
-//        viewModel.subtitleText.bind { [weak self] in
-//            guard let strongSelf = self else { return }
-//
-//            strongSelf.detailTextLabel?.text = $0
-//        }
     }
     
     public func configureWith(value: Any) {

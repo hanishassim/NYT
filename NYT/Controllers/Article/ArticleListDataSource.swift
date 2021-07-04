@@ -8,15 +8,13 @@
 import UIKit
 
 class ArticleListDataSource: NSObject, UITableViewDataSource {
-
-    var objects: [NYTTableViewCellViewModel]?// = [ArticleInfo(url: nil, title: "A", description: "B")]
+    
+    var objects: [NYTTableViewCellViewModel]?
     
     var identifier = "Cell"
     
     required override init() {
         super.init()
-        
-//        objects.append(ArticleInfo(url: nil, title: "A", description: "B"))
     }
     
     func setData(objects: [NYTTableViewCellViewModel]?) {

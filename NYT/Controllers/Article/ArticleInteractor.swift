@@ -19,7 +19,7 @@ class ArticleInteractor: ArticleBusinessLogic {
         switch type {
         case .mostEmailed:
             let url = "\(API.host)/svc/mostpopular/v2/emailed/1.json?api-key=\(API.nytApiKey)"
-
+            
             AF.request(url)
                 .validate()
                 .responseDecodable(of: ArticleListInfo.self) { [weak self] response in

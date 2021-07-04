@@ -41,6 +41,8 @@ public class NYTTableViewCell<ViewModel>: UITableViewCell where ViewModel: NYTTa
     }
     
     private func setupViews() {
+        textLabel?.numberOfLines = 0
+        
         contentView.addSubview(separatorView)
         
         NSLayoutConstraint.activate([
@@ -60,9 +62,12 @@ public class NYTTableViewCell<ViewModel>: UITableViewCell where ViewModel: NYTTa
         }
         
         viewModel.subtitleText.bind { [weak self] in
-            guard let strongSelf = self else { return }
+            guard let strongSelf = self,
+                  let rawDate = $0 else { return }
             
-            strongSelf.detailTextLabel?.text = $0
+            let date = DateFormatter.convert(currentDateInString: rawDate) ?? DateFormatter.convert(currentDateInString: rawDate, dateFormat: "yyyy-MM-dd")
+            
+            strongSelf.detailTextLabel?.text = date?.toString()
         }
     }
     

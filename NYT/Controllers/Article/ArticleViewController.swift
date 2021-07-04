@@ -61,12 +61,6 @@ class ArticleViewController<ViewModel>: UIViewController, UITableViewDelegate wh
             strongSelf.dataSource.setData(objects: $0)
             strongSelf.rootView.tableView.reloadData()
         }
-        
-        viewModel.articleFetchError.bind { [weak self] in
-            guard let strongSelf = self else { return }
-            
-            print($0.debugDescription)
-        }
     }
     
     // MARK: - Table View Delegate

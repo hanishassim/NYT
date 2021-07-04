@@ -14,7 +14,7 @@ protocol HomeViewModelType {
 
 class HomeViewModel: HomeViewModelType {
     public let searchSection: Box<[NYTTableViewCellViewModel]> = {
-        let searches: [String] = ["Search Articles"]
+        let searches: [String] = [HomeSections.search]
         var viewModels = [NYTTableViewCellViewModel]()
         
         for i in searches {
@@ -25,7 +25,7 @@ class HomeViewModel: HomeViewModelType {
     }()
     
     public let popularSection: Box<[NYTTableViewCellViewModel]> = {
-        let searches: [String] = ["Most Viewed", "Most Shared", "Most Emailed"]
+        let searches: [String] = [HomeSections.mostViewed, HomeSections.mostShared, HomeSections.mostEmailed]
         var viewModels = [NYTTableViewCellViewModel]()
         
         for i in searches {

@@ -19,9 +19,4 @@ class NYTSearchTableViewCellViewModel: NYTSearchTableViewCellViewModelType {
     public let subtitleText = Box<String?>(nil)
     
     public let buttonCompletion = Box<(() -> Void)?>(nil)
-    
-    required init() {
-//        self.titleText.value = titleText
-//        self.subtitleText.value = subtitle
-    }
 }

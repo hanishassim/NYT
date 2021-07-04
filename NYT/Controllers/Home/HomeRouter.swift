@@ -9,10 +9,6 @@ import UIKit
 
 struct HomeRouter {
     weak var viewController: UIViewController?
-    
-//    init(viewController: UIViewController) {
-//        self.viewController = viewController
-//    }
 }
 
 extension HomeRouter: HomeRoutable {

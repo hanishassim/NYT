@@ -24,13 +24,7 @@ class SearchDataSource: NSObject, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: identifier, for: indexPath) as? NYTSearchTableViewCell<NYTSearchTableViewCellViewModel> else { return UITableViewCell() }
         
-        let viewModel = NYTSearchTableViewCellViewModel()
-//        viewModel.buttonCompletion.value = { [weak self] in
-//            guard let strongSelf = self else { return }
-//            
-//        }
-        
-        cell.configureWith(value: viewModel)
+        cell.configureWith(value: NYTSearchTableViewCellViewModel())
         
         return cell
     }

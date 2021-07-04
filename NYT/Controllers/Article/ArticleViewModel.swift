@@ -31,7 +31,7 @@ class ArticleViewModel: ArticleViewModelType {
     
     convenience init(with type: ArticleType) {
         self.init()
-
+        
         interactor = ArticleInteractor(presenter: ArticlePresenter(viewController: self))
         
         self.type.value = type

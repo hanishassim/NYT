@@ -51,13 +51,13 @@ class SearchViewController<ViewModel>: UIViewController, UITableViewDelegate, NY
         title = "Search"
         
         rootView.tableView.register(NYTSearchTableViewCell<NYTSearchTableViewCellViewModel>.self, forCellReuseIdentifier: dataSource.identifier)
-
+        
         rootView.tableView.dataSource = dataSource
         rootView.tableView.delegate = self
     }
     
     private func setupListeners() {
-//        viewModel.searchSection.bind
+        //        viewModel.searchSection.bind
     }
     
     // MARK: - Table View Delegate

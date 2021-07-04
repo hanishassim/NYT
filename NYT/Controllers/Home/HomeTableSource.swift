@@ -1,5 +1,5 @@
 //
-//  ObjectDataSource.swift
+//  HomeTableSource.swift
 //  NYT
 //
 //  Created by Hanis Hassim on 03/07/2021.
@@ -7,11 +7,13 @@
 
 import UIKit
 
-class ObjectTableSource: NSObject, UITableViewDataSource {
-
+class HomeTableSource: NSObject, UITableViewDataSource {
+    
     var objects = [CellInfo(sectionTitle: "Search", sectionData: ["Search Articles"])]
     
     var identifier = "Cell"
+    
+    // MARK: - Initializer and Lifecycle Methods -
     
     required override init() {
         super.init()
@@ -47,12 +49,5 @@ class ObjectTableSource: NSObject, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         return objects[safe: section]?.sectionTitle
-    }
-    
-    func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
-        guard let header = view as? UITableViewHeaderFooterView else { return }
-        
-        header.textLabel?.font = .boldSystemFont(ofSize: 16)
-        header.textLabel?.textColor = .white
     }
 }
